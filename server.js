@@ -48,6 +48,7 @@ app.put("/", (req, res) => {
 });
 
 app.delete("/", (req, res) => {
+  console.log(req.body);
   const id = Number(req.body);
   todo = todo.filter((el) => el.id !== id);
 
