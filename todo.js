@@ -6,6 +6,7 @@ const ul = document.querySelector("#todo-list");
 // Create -> 서버에 Todo 추가할 때
 const createTodo = () => {
   const newTodo = todoInput.value;
+
   return fetch("http://localhost:3000", {
     method: "POST",
     body: newTodo,
@@ -16,7 +17,7 @@ const createTodo = () => {
 
 // Read -> 서버에 Todo 정보를 가져올 때
 const readTodo = async () => {
-  const res = await fetch("http://localhost:3000/");
+  const res = await fetch("http://localhost:3000");
   const data = await res.json();
   return data;
 };
@@ -24,6 +25,7 @@ const readTodo = async () => {
 const updateTodo = (newTodo) => {
   return fetch("http://localhost:3000", {
     method: "PUT",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(newTodo),
   })
     .then((res) => res.text())
